@@ -7,3 +7,7 @@
 /src/Quota/packages/Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.1
 /.vs
 /main/Quota/Quota.API/obj
+/main/Quota/packages/Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.1
+/main/Quota/Quota/obj/x64/Debug
+/main/Quota/Quota.API/bin/Debug/net461/win7-x64
+/main/Quota/.vs
