@@ -11,3 +11,12 @@
 /main/Quota/Quota/obj/x64/Debug
 /main/Quota/Quota.API/bin/Debug/net461/win7-x64
 /main/Quota/.vs
+/main/Quota/Quota/pkg/Debug
+/main/Quota/Quota.API/bin/x64/Debug/net461/win7-x64
+/main/Quota/CurrencyService/bin/Debug/net461/win7-x64
+/main/Quota/CurrencyService/obj
+/main/Quota/CurrencyService/PackageRoot
+/main/Quota/CurrencyService/bin/x64/Debug/net461/win7-x64
+/main/Quota/packages
+/main/Quota/Quota.API.Integration.Test/bin/Debug
+/main/Quota/Quota.API.Integration.Test/obj
