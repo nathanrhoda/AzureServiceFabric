@@ -1,0 +1,7 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/Quota/.vs/Quota/v15
+/src/Quota/CurrencyService/obj
+/src/Quota/packages/Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.1
