@@ -1,5 +1,7 @@
 Stateless Service that retrieves Current interest rate based on country code
 Statefull Service that generates a quote
-Actor service checks the status of an application 
+Actor service 
+- applies for finance
+- checks status
 
 This may change if understanding reveals better ways of implementing as progress is made
