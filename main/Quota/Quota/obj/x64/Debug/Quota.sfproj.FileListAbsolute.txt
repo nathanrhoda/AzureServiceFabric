@@ -1,0 +1,1 @@
+H:\ws\AzureServiceFabric\AzureServiceFabric\main\Quota\Quota\obj\x64\Debug\Quota.sfproj.CoreCompileInputs.cache
