@@ -5,3 +5,5 @@
 /src/Quota/.vs/Quota/v15
 /src/Quota/CurrencyService/obj
 /src/Quota/packages/Microsoft.VisualStudio.Azure.Fabric.MSBuild.1.6.1
+/.vs
+/main/Quota/Quota.API/obj
