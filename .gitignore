@@ -24,3 +24,5 @@
 /main/Quota/CurrencyServce.Test/bin/Debug
 /main/Quota/Quota.Integration.Test/bin/Debug
 /main/Quota/Quota.Integration.Test/obj
+/main/Quota/Quota.Gateway/bin
+/main/Quota/Quota.Gateway/obj

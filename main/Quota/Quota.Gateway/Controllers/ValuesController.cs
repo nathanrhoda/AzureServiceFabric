@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Quota.API.Controllers
+namespace Quota.Gateway.Controllers
 {
     [Route("api/[controller]")]
     public class ValuesController : Controller
@@ -13,7 +13,7 @@ namespace Quota.API.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "API" };
+            return new string[] { "Gateway" };
         }
 
         // GET api/values/5

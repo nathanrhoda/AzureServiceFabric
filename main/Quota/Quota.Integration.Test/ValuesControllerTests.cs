@@ -13,7 +13,7 @@ namespace Quota.Integration.Test
         [TestMethod]
         public void Get_WhereServiceIsAvailable_ReturnsValues()
         {
-            var expectedResult = new string[]{ "value1", "value2" };
+            var expectedResult = new string[]{ "Gateway" };
             var client = new HttpClient(); // no HttpServer
 
             var request = new HttpRequestMessage

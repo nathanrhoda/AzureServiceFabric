@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CurrencyService\CurrencyService.csproj" />
     <ProjectReference Include="..\Quota.API\Quota.API.csproj" />
+    <ProjectReference Include="..\Quota.Gateway\Quota.Gateway.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.Common.targets" />
   <PropertyGroup>
