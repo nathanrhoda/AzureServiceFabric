@@ -2,7 +2,10 @@
 <ApplicationManifest xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ApplicationTypeName="QuotaType" ApplicationTypeVersion="1.0.0" xmlns="http://schemas.microsoft.com/2011/01/fabric">
   <Parameters>
     <Parameter Name="CurrencyService_InstanceCount" DefaultValue="-1" />
-    <Parameter Name="Quota.API_InstanceCount" DefaultValue="-1" />
+    <Parameter Name="CurrencyService_MinReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="CurrencyService_PartitionCount" DefaultValue="1" />
+    <Parameter Name="CurrencyService_TargetReplicaSetSize" DefaultValue="3" />
+    <Parameter Name="API_InstanceCount" DefaultValue="-1" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -26,8 +29,8 @@
         <SingletonPartition />
       </StatelessService>
     </Service>
-    <Service Name="Quota.API" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="Quota.APIType" InstanceCount="[Quota.API_InstanceCount]">
+    <Service Name="API" ServicePackageActivationMode="ExclusiveProcess">
+      <StatelessService ServiceTypeName="Quota.APIType" InstanceCount="[API_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
     </Service>

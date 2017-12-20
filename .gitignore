@@ -20,3 +20,4 @@
 /main/Quota/packages
 /main/Quota/Quota.API.Integration.Test/bin/Debug
 /main/Quota/Quota.API.Integration.Test/obj
+/main/Quota/CurrencyServce.Test/obj/Debug

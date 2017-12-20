@@ -26,7 +26,7 @@ namespace CurrencyService
                 ServiceEventSource.Current.ServiceTypeRegistered(Process.GetCurrentProcess().Id, typeof(CurrencyService).Name);
 
                 // Prevents this host process from terminating so services keeps running. 
-                //Thread.Sleep(Timeout.Infinite);
+                Thread.Sleep(Timeout.Infinite);
             }
             catch (Exception e)
             {
