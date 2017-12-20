@@ -3,22 +3,21 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net;
-using System.Collections.Generic;
 
-namespace Quota.Api.Integration.Test
+namespace Quota.Integration.Test
 {
     [TestClass]
-    public class ValuesControllerTests
+    public class CurrenciesControllerTests
     {
         [TestMethod]
         public void Get_WhereServiceIsAvailable_ReturnsValues()
         {
-            var expectedResult = new string[]{ "value1", "value2" };
+            var expectedResult = new string[] { "Currency" };
             var client = new HttpClient(); // no HttpServer
 
             var request = new HttpRequestMessage
             {
-                RequestUri = new Uri("http://localhost:8589/api/values"),
+                RequestUri = new Uri("http://localhost:9058/api/currencies"),
                 Method = HttpMethod.Get
             };
 
