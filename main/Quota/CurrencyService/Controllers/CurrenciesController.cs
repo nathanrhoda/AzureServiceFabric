@@ -13,7 +13,7 @@ namespace CurrencyService.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Currency" };
+            return new string[] { "Currency Updated" };
         }    
     }
 }

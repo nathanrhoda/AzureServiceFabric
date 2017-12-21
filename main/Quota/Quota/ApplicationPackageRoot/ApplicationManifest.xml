@@ -6,7 +6,6 @@
     <Parameter Name="CurrencyService_MinReplicaSetSize" DefaultValue="3" />
     <Parameter Name="CurrencyService_PartitionCount" DefaultValue="1" />
     <Parameter Name="CurrencyService_TargetReplicaSetSize" DefaultValue="3" />
-    <Parameter Name="API_InstanceCount" DefaultValue="-1" />
   </Parameters>
   <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
        should match the Name and Version attributes of the ServiceManifest element defined in the 
@@ -17,10 +16,6 @@
   </ServiceManifestImport>
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="CurrencyServicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-  </ServiceManifestImport>
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="Quota.APIPkg" ServiceManifestVersion="1.0.0" />
     <ConfigOverrides />
   </ServiceManifestImport>
   <DefaultServices>
@@ -36,11 +31,6 @@
     </Service>
     <Service Name="CurrencyService" ServicePackageActivationMode="ExclusiveProcess">
       <StatelessService ServiceTypeName="CurrencyServiceType" InstanceCount="[CurrencyService_InstanceCount]">
-        <SingletonPartition />
-      </StatelessService>
-    </Service>
-    <Service Name="API" ServicePackageActivationMode="ExclusiveProcess">
-      <StatelessService ServiceTypeName="Quota.APIType" InstanceCount="[API_InstanceCount]">
         <SingletonPartition />
       </StatelessService>
     </Service>

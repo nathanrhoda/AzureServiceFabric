@@ -5,15 +5,13 @@ VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{A07B5EB6-E848-4116-A8D0-A826331D98C6}") = "Quota", "Quota\Quota.sfproj", "{08D3641C-77CC-4ACE-9207-113EC6D45D0C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quota.API", "Quota.API\Quota.API.csproj", "{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CurrencyServce.Test", "CurrencyServce.Test\CurrencyServce.Test.csproj", "{FA7B2268-0CE4-4906-9D05-3F74DEFE66BA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CurrencyService", "CurrencyService\CurrencyService.csproj", "{F3526512-0C8F-4BCE-8811-084F5AB07446}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.Integration.Test", "Quota.Integration.Test\Quota.Integration.Test.csproj", "{4BFC3ADB-1C2C-4D5B-AD40-9F6761355E59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.Gateway", "Quota.Gateway\Quota.Gateway.csproj", "{9F4B3524-5D5C-4C60-A42A-298D1086DDFC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quota.Gateway", "Quota.Gateway\Quota.Gateway.csproj", "{9F4B3524-5D5C-4C60-A42A-298D1086DDFC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +29,6 @@ Global
 		{08D3641C-77CC-4ACE-9207-113EC6D45D0C}.Release|x64.ActiveCfg = Release|x64
 		{08D3641C-77CC-4ACE-9207-113EC6D45D0C}.Release|x64.Build.0 = Release|x64
 		{08D3641C-77CC-4ACE-9207-113EC6D45D0C}.Release|x64.Deploy.0 = Release|x64
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Debug|x64.Build.0 = Debug|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Release|x64.ActiveCfg = Release|Any CPU
-		{FBD97F08-D8C0-4E40-B87E-E3B50FC76BBF}.Release|x64.Build.0 = Release|Any CPU
 		{FA7B2268-0CE4-4906-9D05-3F74DEFE66BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{FA7B2268-0CE4-4906-9D05-3F74DEFE66BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA7B2268-0CE4-4906-9D05-3F74DEFE66BA}.Debug|x64.ActiveCfg = Debug|Any CPU

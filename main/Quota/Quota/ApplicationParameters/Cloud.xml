@@ -7,6 +7,5 @@
     <Parameter Name="CurrencyService_MinReplicaSetSize" Value="3" />
     <Parameter Name="CurrencyService_TargetReplicaSetSize" Value="3" />
     <Parameter Name="CurrencyService_InstanceCount" Value="-1" />
-    <Parameter Name="API_InstanceCount" Value="-1" />
   </Parameters>
 </Application>
