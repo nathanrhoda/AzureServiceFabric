@@ -9,9 +9,10 @@ namespace CurrencyService.Controllers
     [Route("api/[controller]")]
     public class CurrenciesController : Controller
     {
+
         // GET api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<string> GetFeed()
         {
             return new string[] { "Currency Updated" };
         }    
