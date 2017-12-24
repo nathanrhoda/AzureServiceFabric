@@ -10,8 +10,8 @@ namespace CurrencyService.Model
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage
-            {
-                RequestUri = new Uri("http://localhost:9058/api/currencies"),
+            {                
+                RequestUri = new Uri("http://www.apilayer.net/api/live?access_key=<ENTER YOUR ACCESS KEY>"),
                 Method = HttpMethod.Get
             };
 
