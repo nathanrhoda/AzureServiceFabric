@@ -7,6 +7,6 @@ namespace CurrencyService.Model
 {
     public interface IFeedProvider
     {
-        string GetFeed();
+        CurrencyFeed GetFeed();
     }
 }

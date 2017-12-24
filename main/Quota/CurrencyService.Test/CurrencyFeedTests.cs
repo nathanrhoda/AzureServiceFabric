@@ -16,7 +16,7 @@ namespace CurrencyService.Test
     public class CurrencyFeedTests
     {        
         [TestMethod]
-        public void Convert_WhereValidJSonIsReceived_ReturnsConvertedAndPopulatedCurrencyFeedObject()
+        public void CurrencyFeed_WhereJsonStringSupplier_ReturnsDeserializedCurrencyFeedObject()
         {
             CurrencyFeed feedObject = null;
             string json = File.ReadAllText(@".\\Mock\\currency.json");

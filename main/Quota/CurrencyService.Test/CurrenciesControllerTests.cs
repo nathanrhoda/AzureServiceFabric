@@ -4,6 +4,7 @@ using CurrencyService.Controllers;
 using Moq;
 using CurrencyService.Model;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace CurrencyService.Test
 {
@@ -16,8 +17,10 @@ namespace CurrencyService.Test
         [TestMethod]
         public void GetFeeds_WhereValidJsonReceived_ReturnsPopulatedCurrencyFeedObject()
         {
-            var _json = File.ReadAllText(@".\\Mock\\currency.json");
-            _mockProvider.Setup(x => x.GetFeed()).Returns(_json);
+            var json = File.ReadAllText(@".\\Mock\\currency.json");
+            var feedObject = JsonConvert.DeserializeObject<CurrencyFeed>(json);
+            _mockProvider.Setup(x => x.GetFeed()).Returns(feedObject);
+
             _mockController.SetupGet(x => x.Provider).Returns(_mockProvider.Object);
             var controller = _mockController.Object;            
             var response = controller.GetFeed();
@@ -28,7 +31,8 @@ namespace CurrencyService.Test
         [TestMethod]
         public void GetFeeds_WhereInvalidJsonReceived_ReturnsPopulatedCurrencyFeedObject()
         {
-            _mockProvider.Setup(x => x.GetFeed()).Returns("");
+            CurrencyFeed nullFeed = null;
+            _mockProvider.Setup(x => x.GetFeed()).Returns(nullFeed);
             _mockController.SetupGet(x => x.Provider).Returns(_mockProvider.Object);
             var controller = _mockController.Object;
             var response = controller.GetFeed();

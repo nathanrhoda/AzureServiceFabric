@@ -25,8 +25,7 @@ namespace CurrencyService.Controllers
         [HttpGet]
         public CurrencyFeed GetFeed()
         {            
-            var json = Provider.GetFeed();
-            var feed = JsonConvert.DeserializeObject<CurrencyFeed>(json);
+            var feed = Provider.GetFeed();            
 
             return feed;
         }    
