@@ -10,7 +10,6 @@ namespace CurrencyService.Model
     [DataContract]
     public class CurrencyFeed
     {
-
         [JsonProperty("success")]
         public string Success { get; set; }
 
@@ -28,5 +27,6 @@ namespace CurrencyService.Model
 
         [JsonProperty("quotes")]
         public Dictionary<string, string> Quotes { get; set; }
+        
     }
 }

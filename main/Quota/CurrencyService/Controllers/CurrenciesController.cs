@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using CurrencyService.Model;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace CurrencyService.Controllers
 {
@@ -10,11 +8,27 @@ namespace CurrencyService.Controllers
     public class CurrenciesController : Controller
     {
 
-        // GET api/values
-        [HttpGet]
-        public IEnumerable<string> GetFeed()
+        private IFeedProvider _provider;
+        public virtual IFeedProvider Provider
         {
-            return new string[] { "Currency Updated" };
+            get
+            {
+                if (_provider == null)
+                {
+                    _provider = new FeedProvider();
+                }
+
+                return _provider;
+            }
+        }
+
+        [HttpGet]
+        public CurrencyFeed GetFeed()
+        {            
+            var json = Provider.GetFeed();
+            var feed = JsonConvert.DeserializeObject<CurrencyFeed>(json);
+
+            return feed;
         }    
     }
 }

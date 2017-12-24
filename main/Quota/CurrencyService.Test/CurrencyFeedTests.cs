@@ -24,6 +24,6 @@ namespace CurrencyService.Test
 
             Assert.IsNotNull(feedObject);
             Assert.IsTrue(feedObject.Quotes.Count > 0);
-        }
+        }                
     }
 }
