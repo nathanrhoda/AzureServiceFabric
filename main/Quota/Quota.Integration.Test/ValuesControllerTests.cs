@@ -18,7 +18,7 @@ namespace Quota.Integration.Test
 
             var request = new HttpRequestMessage
             {
-                RequestUri = new Uri("http://localhost:8589/api/values"),
+                RequestUri = new Uri("http://localhost:8712/api/values"),
                 Method = HttpMethod.Get
             };
 
