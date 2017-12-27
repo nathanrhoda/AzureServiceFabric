@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Configuration;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -13,12 +14,13 @@ namespace Quota.Integration.Test
         [TestMethod]
         public void Get_WhereServiceIsAvailable_ReturnsValues()
         {
+            var valueGatewayUrl = ConfigurationManager.AppSettings["valueGatewayUrl"];
             var expectedResult = new string[]{ "Gateway" };
             var client = new HttpClient();
 
             var request = new HttpRequestMessage
             {
-                RequestUri = new Uri("http://localhost:8712/api/values"),
+                RequestUri = new Uri(valueGatewayUrl),
                 Method = HttpMethod.Get
             };
 

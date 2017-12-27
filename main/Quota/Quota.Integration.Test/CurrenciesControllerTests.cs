@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Net;
 using CurrencyService.Model;
 using Newtonsoft.Json;
+using System.Configuration;
 
 namespace Quota.Integration.Test
 {
@@ -13,12 +14,13 @@ namespace Quota.Integration.Test
     {
         [TestMethod]
         public void GetFeed_WhereServiceIsAvailable_ReturnsValues()
-        {            
+        {
+            var url = ConfigurationManager.AppSettings["currenciesUrl"];
             var client = new HttpClient(); 
 
             var request = new HttpRequestMessage
             {
-                RequestUri = new Uri("http://localhost:9058/api/currencies"),
+                RequestUri = new Uri(url),
                 Method = HttpMethod.Get
             };
 
