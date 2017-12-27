@@ -1,0 +1,24 @@
+Name 
+Surname
+Email
+Contact Number
+
+Category of Goods
+Container size 6 meter/12 meter
+Cost price of goods per container
+
+
+Post -> Quota.Gateway -> Generate Quote    -> Get Currency 
+					   -> Calculate Quote
+                                           -> Generate on Letterhead
+                                           -> Persist 
+                                           -> Mail Quote
+
+Post -> Quota.Gateway -> Retrieve Quote    -> Retrieve Quote by QuoteId
+                                           -> Generate on Letterhead
+                                           -> Mail Quote
+
+
+
+
+                      
