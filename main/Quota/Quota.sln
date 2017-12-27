@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.Common", "Quota.Commo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Quotation", "Quotation", "{71ABD590-0E06-44DF-AAA3-5273D2B62351}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationService", "QuotationService\QuotationService.csproj", "{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuotationService", "QuotationService\QuotationService.csproj", "{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationService.Test", "QuotationService.Test\QuotationService.Test.csproj", "{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529}"
 EndProject
