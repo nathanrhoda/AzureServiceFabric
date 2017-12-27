@@ -36,3 +36,7 @@
 /main/Quota/Quota.Common/bin/x64/Debug
 /main/Quota/Quota.Common/obj/x64/Debug
 /main/Quota/Quota.Integration.Test/bin/x64/Debug
+/main/Quota/QuotationService/bin
+/main/Quota/QuotationService/obj
+/main/Quota/QuotationService.Test/bin
+/main/Quota/QuotationService.Test/obj/Debug
