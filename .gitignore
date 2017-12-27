@@ -31,3 +31,8 @@
 /main/Quota/CurrencyService.Test/bin/x64/Debug
 /main/Quota/CurrencyService.Test/obj/x64/Debug
 /main/Quota/CurrencyService/CurrencyService.csproj.user
+/main/Quota/Quota.Common/bin/Debug
+/main/Quota/Quota.Common/obj/Debug
+/main/Quota/Quota.Common/bin/x64/Debug
+/main/Quota/Quota.Common/obj/x64/Debug
+/main/Quota/Quota.Integration.Test/bin/x64/Debug
