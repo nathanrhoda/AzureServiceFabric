@@ -28,3 +28,6 @@
 /main/Quota/Quota.Gateway/obj
 /main/Quota/CurrencyService.Test/bin/Debug
 /main/Quota/CurrencyService.Test/obj/Debug
+/main/Quota/CurrencyService.Test/bin/x64/Debug
+/main/Quota/CurrencyService.Test/obj/x64/Debug
+/main/Quota/CurrencyService/CurrencyService.csproj.user

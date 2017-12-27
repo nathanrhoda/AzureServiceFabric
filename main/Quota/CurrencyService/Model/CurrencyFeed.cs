@@ -1,31 +1,27 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Threading.Tasks;
 
 namespace CurrencyService.Model
 {
     [DataContract]
     public class CurrencyFeed
     {
-        [JsonProperty("success")]
+        [DataMember]
         public string Success { get; set; }
 
-        [JsonProperty("terms")]
+        [DataMember]
         public string Terms { get; set; }
 
-        [JsonProperty("privacy")]
+        [DataMember]
         public string Privacy { get; set; }
 
-        [JsonProperty("timestamp")]
+        [DataMember]
         public string Timestamp { get; set; }
 
-        [JsonProperty("source")]
+        [DataMember]
         public string Source { get; set; }
 
-        [JsonProperty("quotes")]
+        [DataMember]
         public Dictionary<string, string> Quotes { get; set; }
         
     }

@@ -3,6 +3,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net;
+using CurrencyService.Model;
+using Newtonsoft.Json;
 
 namespace Quota.Integration.Test
 {
@@ -12,7 +14,7 @@ namespace Quota.Integration.Test
         [TestMethod]
         public void GetFeed_WhereServiceIsAvailable_ReturnsValues()
         {            
-            var client = new HttpClient(); // no HttpServer
+            var client = new HttpClient(); 
 
             var request = new HttpRequestMessage
             {
@@ -24,7 +26,11 @@ namespace Quota.Integration.Test
 
             using (var response = client.SendAsync(request).Result)
             {         
-                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);                
+                Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
+
+                var feed =  response.Content.ReadAsStringAsync().Result;
+                var currencyFeed = JsonConvert.DeserializeObject<CurrencyFeed>(feed);
+                Assert.IsNotNull(currencyFeed);
             }
         }
     }

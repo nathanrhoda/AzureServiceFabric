@@ -1,14 +1,7 @@
-﻿using System;
-using System.IO;
-
-using System.Runtime.Serialization.Json;
-using System.Text;
-using Newtonsoft.Json;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using Newtonsoft.Json.Linq;
+﻿using CurrencyService.Model;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using CurrencyService.Model;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace CurrencyService.Test
 {
