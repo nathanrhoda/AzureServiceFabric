@@ -13,7 +13,7 @@ namespace Quota.Gateway.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "Gateway Updated" };
+            return new string[] { "Gateway" };
         }
 
         // GET api/values/5

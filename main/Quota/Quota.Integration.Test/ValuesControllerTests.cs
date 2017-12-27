@@ -15,7 +15,6 @@ namespace Quota.Integration.Test
         public void Get_WhereServiceIsAvailable_ReturnsValues()
         {
             var valueGatewayUrl = ConfigurationManager.AppSettings["valueGatewayUrl"];
-            var expectedResult = new string[]{ "Gateway" };
             var client = new HttpClient();
 
             var request = new HttpRequestMessage
@@ -30,7 +29,7 @@ namespace Quota.Integration.Test
             {
                 var actualResult = response.Content.ReadAsAsync<string[]>().Result;
                 Assert.AreEqual(HttpStatusCode.OK, response.StatusCode);
-                Assert.AreEqual(expectedResult.Length, actualResult.Length);
+                Assert.IsTrue(actualResult.Length > 0);
             }
         }
     }
