@@ -1,42 +1,54 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
-
+using System.Fabric;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Quota.Gateway.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Gateway/[controller]")]
     public class QuotationController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
+        private readonly ConfigSettings configSettings;
+        private readonly StatelessServiceContext serviceContext;
+        private readonly HttpClient httpClient;
+        private readonly FabricClient fabricClient;
+
+
+        public QuotationController(ConfigSettings configSettings, StatelessServiceContext serviceContext, HttpClient httpClient, FabricClient fabricClient)
         {
-            return new string[] { "Quote1" };
+            this.serviceContext = serviceContext;
+            this.configSettings = configSettings;
+            this.httpClient = httpClient;
+            this.fabricClient = fabricClient;
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public string Get(int id)
-        {
-            return "value";
-        }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]string value)
+        public async Task<IActionResult> GetAsync()
         {
-        }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
-        {
-        }
+            try
+            {
+                string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+                string proxyUrl =
+                      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies";
+                HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return this.StatusCode((int)response.StatusCode);
+                }
+
+                return this.Ok(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
         }
     }
 }
