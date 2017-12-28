@@ -41,3 +41,5 @@
 /main/Quota/QuotationService.Test/bin
 /main/Quota/QuotationService.Test/obj/Debug
 /main/Quota/CurrencyService.Interfaces/obj
+/main/Quota/CurrencyService.Interfaces/bin
+/main/Quota/QuotationService.Test/obj/x64/Debug

@@ -23,11 +23,11 @@ namespace CurrencyService.Controllers
         }
 
         [HttpGet]
-        public CurrencyFeed GetFeed()
+        public IActionResult GetFeed()
         {            
             var feed = Provider.GetFeed();            
 
-            return feed;
+            return new JsonResult(feed);
         }    
     }
 }

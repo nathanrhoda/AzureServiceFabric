@@ -5,6 +5,7 @@ using Moq;
 using CurrencyService.Model;
 using System.IO;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CurrencyService.Test
 {
@@ -22,10 +23,11 @@ namespace CurrencyService.Test
             _mockProvider.Setup(x => x.GetFeed()).Returns(feedObject);
 
             _mockController.SetupGet(x => x.Provider).Returns(_mockProvider.Object);
-            var controller = _mockController.Object;            
-            var response = controller.GetFeed();
-
-            Assert.IsNotNull(response);
+            var controller = _mockController.Object;
+            var response = controller.GetFeed() as JsonResult;
+            var feed = (CurrencyFeed)response.Value;
+            
+            Assert.IsNotNull(feed);
         }
 
         [TestMethod]
@@ -35,9 +37,10 @@ namespace CurrencyService.Test
             _mockProvider.Setup(x => x.GetFeed()).Returns(nullFeed);
             _mockController.SetupGet(x => x.Provider).Returns(_mockProvider.Object);
             var controller = _mockController.Object;
-            var response = controller.GetFeed();
-
-            Assert.IsNull(response);
+            var response = controller.GetFeed() as JsonResult;
+            var feed = (CurrencyFeed)response.Value;
+            
+            Assert.IsNull(feed);
         }
     }
 }
