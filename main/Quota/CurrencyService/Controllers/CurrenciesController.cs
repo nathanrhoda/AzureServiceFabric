@@ -28,6 +28,12 @@ namespace CurrencyService.Controllers
             var feed = Provider.GetFeed();            
 
             return new JsonResult(feed);
-        }    
+        }
+
+        [HttpGet("HeartBeat")]
+        public IActionResult Heartbeat()
+        {
+            return new JsonResult("Im alive");
+        }
     }
 }
