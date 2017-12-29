@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Quota.Gateway.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("Gateway/[controller]")]
     public class ValuesController : Controller
     {
         // GET api/values
