@@ -1,4 +1,5 @@
-﻿using Quota.Common;
+﻿using Newtonsoft.Json;
+using Quota.Common;
 
 namespace CurrencyService.Model
 {
@@ -6,9 +7,8 @@ namespace CurrencyService.Model
     {
         public CurrencyFeed GetFeed()
         {
-            var feed = APIUtilities.Get<CurrencyFeed>("http://www.apilayer.net/api/live?access_key=<Enter Code Here>");
-            return feed;
-           
+            var feedString = APIUtilities.Get("http://www.apilayer.net/api/live?access_key=<Enter Code Here>");
+            return JsonConvert.DeserializeObject<CurrencyFeed>(feedString);                       
         }
     }
 }

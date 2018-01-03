@@ -25,7 +25,11 @@ namespace QuotationService.Controllers
         [HttpPost]
         public string Generate(QuoteRequest request)
         {
-            throw new NotImplementedException();
+            if (request != null)
+            {
+                return "Success";
+            }
+            return "Failure";
         }
     }
 }

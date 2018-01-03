@@ -9,11 +9,10 @@ namespace Quota.Integration.Test
     {
         [TestMethod]
         public void Get_WhereValuesGatewayIsAvailable_ReturnsValues()
-        {
-            var valueGatewayUrl = ConfigurationManager.AppSettings["valueGatewayUrl"];
+        {            
             var url = ConfigurationManager.AppSettings["valueGatewayUrl"];
-            var values = APIUtilities.Get<string[]>(valueGatewayUrl);
-            Assert.IsNotNull(values);
+            var values = APIUtilities.Get(url);
+            Assert.IsTrue(values.Length  > 0);
         }
     }
 }

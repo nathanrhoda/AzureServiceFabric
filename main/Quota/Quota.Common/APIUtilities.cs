@@ -7,7 +7,7 @@ namespace Quota.Common
 {
     public class APIUtilities
     {
-        public static T Get<T>(string url)
+        public static string Get(string url)
         {
             var client = new HttpClient();
             var request = new HttpRequestMessage
@@ -21,7 +21,7 @@ namespace Quota.Common
             using (var response = client.GetAsync(request.RequestUri).Result)
             {
                 var stringResponse = response.Content.ReadAsStringAsync().Result;
-                return JsonConvert.DeserializeObject<T>(stringResponse);
+                return stringResponse;                
             }
         }
     }

@@ -16,7 +16,7 @@ namespace QuotationService.Test
             Assert.IsNotNull(quotes);
         }
 
-        [TestMethod, Ignore("Shifting focus to exposing Currency Rates via Quota.Gateway first to simplify problems that will need solving when quotation rules need to be implemented")]
+        [TestMethod]
         public void Generate_WhereQuoteRequestSupplied_ReturnsSuccessMessage()
         {
             var request = new QuoteRequest
@@ -35,6 +35,17 @@ namespace QuotationService.Test
             var msg = controller.Generate(request);
 
             Assert.AreEqual("Success", msg);
+        }
+
+        [TestMethod]
+        public void Generate_WhereQuoteRequestSuppliedIsNull_ReturnsFailureMessage()
+        {
+            QuoteRequest request = null;
+
+            var controller = new QuotesController();
+            var msg = controller.Generate(request);
+
+            Assert.AreEqual("Failure", msg);
         }
     }
 }
