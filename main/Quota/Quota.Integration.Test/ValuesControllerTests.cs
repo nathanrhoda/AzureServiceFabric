@@ -11,7 +11,7 @@ namespace Quota.Integration.Test
         public void Get_WhereValuesGatewayIsAvailable_ReturnsValues()
         {
             var valueGatewayUrl = ConfigurationManager.AppSettings["valueGatewayUrl"];
-            var url = ConfigurationManager.AppSettings["currenciesUrl"];
+            var url = ConfigurationManager.AppSettings["valueGatewayUrl"];
             var values = APIUtilities.Get<string[]>(valueGatewayUrl);
             Assert.IsNotNull(values);
         }
