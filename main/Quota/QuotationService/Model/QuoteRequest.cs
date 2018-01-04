@@ -1,4 +1,6 @@
-﻿namespace QuotationService.Model
+﻿using System;
+
+namespace QuotationService.Model
 {
     public class QuoteRequest
     {
@@ -10,5 +12,18 @@
         public string ContainerSize { get; set; }
         public string UnitOfGoods { get; set; }
         public int CostPriceOfGoods { get; set; }
+
+        public bool IsValid()
+        {
+            if (Name == null ||
+                Surname == null ||
+                Email == null ||
+                ContactNumber == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

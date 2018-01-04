@@ -24,5 +24,18 @@ namespace Quota.Common
                 return stringResponse;                
             }
         }
+
+        public static string Post<T>(T request, string url)
+        {
+            string stringData = JsonConvert.SerializeObject(request);
+            var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
+            var client = new HttpClient();
+
+            using (var response = client.PostAsync(url, requestContent).Result)                
+            {
+                var stringResponse = response.Content.ReadAsStringAsync().Result;
+                return stringResponse;
+            }
+        }
     }
 }

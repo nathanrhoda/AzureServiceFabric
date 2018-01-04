@@ -24,12 +24,18 @@ namespace QuotationService.Controllers
 
         [HttpPost]
         public string Generate(QuoteRequest request)
-        {
-            if (request != null)
+        {            
+            if (request == null)
             {
-                return "Success";
+                return "Failure";
             }
-            return "Failure";
+
+            if(!request.IsValid())
+            {
+                return "Failure";                
+            }
+
+            return "Success";
         }
     }
 }

@@ -11,7 +11,7 @@ namespace Quota.Integration.Test
         [TestMethod]
         public void GetFeed_WhereServiceIsAvailable_ReturnsValues()
         {
-            var url = ConfigurationManager.AppSettings["currenciesUrl"];
+            var url = ConfigurationManager.AppSettings["currenciesGatewayUrl"];
             var feed = APIUtilities.Get(url);
             Assert.IsTrue(feed.Length  > 0);
         }

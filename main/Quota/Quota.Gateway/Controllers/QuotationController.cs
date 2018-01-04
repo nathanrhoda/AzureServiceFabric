@@ -78,6 +78,33 @@ namespace Quota.Gateway.Controllers
             }
 
         }
-        
+
+        [HttpPost]
+        public async Task<IActionResult> PostAsync()
+        {
+
+            try
+            {
+                string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
+
+                string proxyUrl =
+                      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies";
+                HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
+
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return this.StatusCode((int)response.StatusCode);
+                }
+
+                return this.Ok(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+
+        }
+
     }
 }
