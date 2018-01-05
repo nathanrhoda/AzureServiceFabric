@@ -23,10 +23,15 @@
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.WebListener" Version="2.5.216" />
     <PackageReference Include="Microsoft.ServiceFabric.Data" Version="2.7.198" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="2.7.198" />
+    <PackageReference Include="Microsoft.ServiceFabric.Services.Remoting" Version="2.6.210" />
   </ItemGroup>
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Quota.Common\Quota.Common.csproj" />
   </ItemGroup>
 
 </Project>
