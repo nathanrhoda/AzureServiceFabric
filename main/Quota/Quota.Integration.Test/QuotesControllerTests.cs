@@ -12,7 +12,10 @@ namespace Quota.Integration.Test
         [TestMethod]
         public void PostGenerate_WhereServiceIsAvailable_ReturnsValues()
         {
-            var request = new QuoteRequest();
+            var request = new QuoteRequest
+            {
+                Name="MONO"
+            };
 
             var url = ConfigurationManager.AppSettings["quotesGatewayUrl"];
             var feed = APIUtilities.Post(request, url);

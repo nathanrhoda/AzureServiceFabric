@@ -23,7 +23,7 @@ namespace QuotationService.Controllers
         }
 
         [HttpPost]
-        public string Generate(QuoteRequest request)
+        public string Generate([FromBody] QuoteRequest request)
         {            
             if (request == null)
             {

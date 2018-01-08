@@ -11,6 +11,7 @@ using System.Fabric;
 using System.Fabric.Description;
 using System.IO;
 using System.Net.Http;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Quota.Gateway.Controllers
@@ -87,44 +88,24 @@ namespace Quota.Gateway.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostAsync(GatewayQuoteRequest request)
+        public async Task<IActionResult> PostAsync([FromBody] GatewayQuoteRequest request)
         {
-
             try
             {
+                string stringData = JsonConvert.SerializeObject(request);
+                var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
+
+                HttpRequestMessage msg = new HttpRequestMessage();
+
                 var resolver = ServicePartitionResolver.GetDefault();
                 var partitionKey = new ServicePartitionKey(-1);
                 var cancellationToken = new System.Threading.CancellationToken();
-                var p = await resolver.ResolveAsync(new Uri("fabric:/Quota/QuotationService"), partitionKey, cancellationToken);
-                var reader = new StreamReader(this.Request.Body);
-                var body = reader.ReadToEnd();
-                var content = new StringContent(body, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded");
+                var p = await resolver.ResolveAsync(new Uri(serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.QuotationServiceName), partitionKey, cancellationToken);
 
-                var http = new HttpClient();
                 JObject addresses = JObject.Parse(p.GetEndpoint().Address);
                 string primaryReplicaAddress = (string)addresses["Endpoints"].First;
                 var url = primaryReplicaAddress + "/api/quotes";
-                var response = await http.PostAsync(url, content);
-         
-                //EndpointResourceDescription inputEndpoint = serviceContext.CodePackageActivationContext.GetEndpoint("ServiceEndpoint");
-                //string uriPrefix = String.Format("{0}://+:{1}/quotationservice/", inputEndpoint.Protocol, inputEndpoint.Port);
-
-                //string stringData = JsonConvert.SerializeObject(request);
-                //string uriPublished = uriPrefix.Replace("+", FabricRuntime.GetNodeContext().IPAddressOrFQDN);
-
-
-                //var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
-
-                //string quotationServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.QuotationServiceName;
-
-                //string proxyUrl =
-                //      $"http://localhost:{this.configSettings.ReverseProxyPort}/{quotationServiceUrl.Replace("fabric:/", "")}/api/quotes";
-                //HttpResponseMessage response = this.httpClient.PostAsync(proxyUrl, requestContent).Result;
-
-                //if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                //{
-                //    return this.StatusCode((int)response.StatusCode);
-                //}
+                var response = httpClient.PostAsync(url, requestContent).Result;
 
                 return this.Ok(await response.Content.ReadAsStringAsync());
             }
