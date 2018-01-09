@@ -33,18 +33,20 @@ namespace Quota.Gateway.Controllers
 
             try
             {
-                string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
+                string restUrl = "/api/Currencies";
+                return await GetToServiceFabric(this.configSettings.CurrencyServiceName, restUrl, this.configSettings.ReverseProxyPort);
+                //string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
 
-                string proxyUrl =
-                      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies";
-                HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
+                //string proxyUrl =
+                //      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies";
+                //HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
 
-                if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                {
-                    return this.StatusCode((int)response.StatusCode);
-                }
+                //if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                //{
+                //    return this.StatusCode((int)response.StatusCode);
+                //}
 
-                return this.Ok(await response.Content.ReadAsStringAsync());
+                //return this.Ok(await response.Content.ReadAsStringAsync());
             }
             catch (Exception e)
             {
@@ -88,7 +90,7 @@ namespace Quota.Gateway.Controllers
                 string stringData = JsonConvert.SerializeObject(request);
                 var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
                 string restUrlPath = "/api/quotes";
-                return PostToServiceFabric(requestContent, this.configSettings.QuotationServiceName, restUrlPath).Result;                
+                return await PostToServiceFabric(requestContent, this.configSettings.QuotationServiceName, restUrlPath);
             }
             catch (Exception e)
             {
@@ -98,7 +100,7 @@ namespace Quota.Gateway.Controllers
 
         }
 
-        private async Task<IActionResult> PostToServiceFabric(StringContent requestContent,string serviceName, string restUrl)
+        private async Task<IActionResult> PostToServiceFabric(StringContent requestContent, string serviceName, string restUrl)
         {
             var resolver = ServicePartitionResolver.GetDefault();
             var partitionKey = new ServicePartitionKey(-1);
@@ -117,12 +119,12 @@ namespace Quota.Gateway.Controllers
             return Ok(await response.Content.ReadAsStringAsync());
         }
 
-        private async Task<IActionResult> GetToServiceFabric(string restUrl)
+        private async Task<IActionResult> GetToServiceFabric(string serviceName, string restUrl, int reverseProxyPort)
         {
-            string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
+            string serviceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + serviceName;
 
             string proxyUrl =
-                  $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}" + restUrl;
+                  $"http://localhost:{reverseProxyPort}/{serviceUrl.Replace("fabric:/", "")}" + restUrl;
             HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
 
             if (response.StatusCode != System.Net.HttpStatusCode.OK)
