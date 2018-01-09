@@ -23,7 +23,6 @@
     <PackageReference Include="Microsoft.ServiceFabric.Data" Version="2.8.232" />
     <PackageReference Include="Microsoft.ServiceFabric.Services" Version="2.8.232" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.Net.Http.Formatting.Extension" Version="5.2.3" />
   </ItemGroup>
 
   <ItemGroup>
@@ -31,7 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Quota.Common\Quota.Common.csproj" />
+    <ProjectReference Include="..\Quota.CommonUtils\Quota.CommonUtils.csproj" />
   </ItemGroup>
 
 </Project>

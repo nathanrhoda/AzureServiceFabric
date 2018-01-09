@@ -1,5 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Quota.Common;
+using Quota.CommonUtils;
 using System.Configuration;
 
 namespace Quota.Integration.Test

@@ -69,18 +69,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Net" />
-    <Reference Include="System.Net.Http, Version=4.1.1.2, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.4.3.3\lib\net46\System.Net.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security.Cryptography.Algorithms, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Algorithms.4.3.1\lib\net461\System.Security.Cryptography.Algorithms.dll</HintPath>
     </Reference>
@@ -111,9 +99,9 @@
       <Project>{f3526512-0c8f-4bce-8811-084f5ab07446}</Project>
       <Name>CurrencyService</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Quota.Common\Quota.Common.csproj">
-      <Project>{9C261F00-D552-42C0-9B11-E73FC24A232F}</Project>
-      <Name>Quota.Common</Name>
+    <ProjectReference Include="..\Quota.CommonUtils\Quota.CommonUtils.csproj">
+      <Project>{a6afa0f9-e249-4175-8336-b5ca05a88145}</Project>
+      <Name>Quota.CommonUtils</Name>
     </ProjectReference>
     <ProjectReference Include="..\QuotationService\QuotationService.csproj">
       <Project>{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA}</Project>

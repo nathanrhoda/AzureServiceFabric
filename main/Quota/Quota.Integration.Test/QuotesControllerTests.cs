@@ -1,8 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Configuration;
-using Quota.Common;
 using QuotationService.Model;
+using Quota.CommonUtils;
 
 namespace Quota.Integration.Test
 {

@@ -25,6 +25,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QuotationService", "Quotati
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationService.Test", "QuotationService.Test\QuotationService.Test.csproj", "{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.CommonUtils", "Quota.CommonUtils\Quota.CommonUtils.csproj", "{A6AFA0F9-E249-4175-8336-B5CA05A88145}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +99,14 @@ Global
 		{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529}.Release|x64.ActiveCfg = Release|Any CPU
 		{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529}.Release|x64.Build.0 = Release|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Debug|x64.Build.0 = Debug|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|x64.ActiveCfg = Release|Any CPU
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +117,7 @@ Global
 		{9C261F00-D552-42C0-9B11-E73FC24A232F} = {60A08B32-A946-4893-A384-5B9415EEAA39}
 		{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA} = {71ABD590-0E06-44DF-AAA3-5273D2B62351}
 		{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529} = {71ABD590-0E06-44DF-AAA3-5273D2B62351}
+		{A6AFA0F9-E249-4175-8336-B5CA05A88145} = {60A08B32-A946-4893-A384-5B9415EEAA39}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6365D981-6147-4470-AD91-52B4FA3B3E2F}

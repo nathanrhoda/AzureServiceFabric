@@ -1,17 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.ServiceFabric.Services.Client;
-using Microsoft.ServiceFabric.Services.Remoting.Client;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Quota.Common;
 using Quota.Gateway.Model;
 using System;
-using System.Collections.Generic;
 using System.Fabric;
-using System.Fabric.Description;
-using System.IO;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 
 namespace Quota.Gateway.Controllers
