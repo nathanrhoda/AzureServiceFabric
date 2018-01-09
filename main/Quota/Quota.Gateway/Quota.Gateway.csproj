@@ -30,8 +30,4 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Quota.Common\Quota.Common.csproj" />
-  </ItemGroup>
-
 </Project>
