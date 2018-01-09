@@ -78,7 +78,6 @@ namespace Quota.Gateway.Controllers
 
                 throw e;
             }
-
         }
 
         [HttpPost]
@@ -88,11 +87,8 @@ namespace Quota.Gateway.Controllers
             {
                 string stringData = JsonConvert.SerializeObject(request);
                 var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
-
-                var url = PostUrlForServiceFabricApiUrl("/api/quotes").Result;
-                var response = httpClient.PostAsync(url, requestContent).Result;
-
-                return this.Ok(await response.Content.ReadAsStringAsync());
+                string restUrlPath = "/api/quotes";
+                return PostToServiceFabric(requestContent, this.configSettings.QuotationServiceName, restUrlPath).Result;                
             }
             catch (Exception e)
             {
@@ -102,18 +98,39 @@ namespace Quota.Gateway.Controllers
 
         }
 
-        private async Task<string> PostUrlForServiceFabricApiUrl(string restUrl)
+        private async Task<IActionResult> PostToServiceFabric(StringContent requestContent,string serviceName, string restUrl)
         {
             var resolver = ServicePartitionResolver.GetDefault();
             var partitionKey = new ServicePartitionKey(-1);
             var cancellationToken = new System.Threading.CancellationToken();
-            var p = await resolver.ResolveAsync(new Uri(serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.QuotationServiceName), partitionKey, cancellationToken);
+            var p = await resolver.ResolveAsync(new Uri(serviceContext.CodePackageActivationContext.ApplicationName + "/" + serviceName), partitionKey, cancellationToken);
 
             JObject addresses = JObject.Parse(p.GetEndpoint().Address);
             string primaryReplicaAddress = (string)addresses["Endpoints"].First;
             var url = primaryReplicaAddress + restUrl;
+            var response = httpClient.PostAsync(url, requestContent).Result;
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return this.StatusCode((int)response.StatusCode);
+            }
 
-            return url;
+            return Ok(await response.Content.ReadAsStringAsync());
+        }
+
+        private async Task<IActionResult> GetToServiceFabric(string restUrl)
+        {
+            string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
+
+            string proxyUrl =
+                  $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}" + restUrl;
+            HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
+
+            if (response.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                return this.StatusCode((int)response.StatusCode);
+            }
+
+            return this.Ok(await response.Content.ReadAsStringAsync());
         }
     }
 }
