@@ -30,23 +30,10 @@ namespace Quota.Gateway.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAsync()
         {
-
             try
             {
                 string restUrl = "/api/Currencies";
                 return await GetToServiceFabric(this.configSettings.CurrencyServiceName, restUrl, this.configSettings.ReverseProxyPort);
-                //string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
-
-                //string proxyUrl =
-                //      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies";
-                //HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
-
-                //if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                //{
-                //    return this.StatusCode((int)response.StatusCode);
-                //}
-
-                //return this.Ok(await response.Content.ReadAsStringAsync());
             }
             catch (Exception e)
             {
@@ -62,18 +49,8 @@ namespace Quota.Gateway.Controllers
 
             try
             {
-                string currencyServiceUrl = this.serviceContext.CodePackageActivationContext.ApplicationName + "/" + this.configSettings.CurrencyServiceName;
-
-                string proxyUrl =
-                      $"http://localhost:{this.configSettings.ReverseProxyPort}/{currencyServiceUrl.Replace("fabric:/", "")}/api/Currencies/Heartbeat";
-                HttpResponseMessage response = await this.httpClient.GetAsync(proxyUrl);
-
-                if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                {
-                    return this.StatusCode((int)response.StatusCode);
-                }
-
-                return this.Ok(await response.Content.ReadAsStringAsync());
+                string restUrl = "/api/Currencies/Heartbeat";
+                return await GetToServiceFabric(this.configSettings.CurrencyServiceName, restUrl, this.configSettings.ReverseProxyPort);               
             }
             catch (Exception e)
             {
