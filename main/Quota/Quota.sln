@@ -25,6 +25,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuotationService.Test", "Qu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quota.CommonUtils", "Quota.CommonUtils\Quota.CommonUtils.csproj", "{A6AFA0F9-E249-4175-8336-B5CA05A88145}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application", "{058E7C7A-DDD9-4FC3-88C6-A2E3BAE57BA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationActor", "ApplicationActor\ApplicationActor.csproj", "{D1E25B24-95AD-4122-91B8-6749456623CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationActor.Interfaces", "ApplicationActor.Interfaces\ApplicationActor.Interfaces.csproj", "{5027E1AE-90F8-4265-B68B-242BCA179545}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -97,6 +103,18 @@ Global
 		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|x64.ActiveCfg = Release|Any CPU
 		{A6AFA0F9-E249-4175-8336-B5CA05A88145}.Release|x64.Build.0 = Release|Any CPU
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Debug|x64.ActiveCfg = Debug|x64
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Debug|x64.Build.0 = Debug|x64
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Release|Any CPU.ActiveCfg = Release|x64
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Release|x64.ActiveCfg = Release|x64
+		{D1E25B24-95AD-4122-91B8-6749456623CD}.Release|x64.Build.0 = Release|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Debug|x64.ActiveCfg = Debug|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Debug|x64.Build.0 = Debug|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Release|Any CPU.ActiveCfg = Release|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Release|x64.ActiveCfg = Release|x64
+		{5027E1AE-90F8-4265-B68B-242BCA179545}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -107,6 +125,8 @@ Global
 		{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA} = {71ABD590-0E06-44DF-AAA3-5273D2B62351}
 		{E6D5BD1D-72E1-4E70-8CD4-FE7FBB733529} = {71ABD590-0E06-44DF-AAA3-5273D2B62351}
 		{A6AFA0F9-E249-4175-8336-B5CA05A88145} = {60A08B32-A946-4893-A384-5B9415EEAA39}
+		{D1E25B24-95AD-4122-91B8-6749456623CD} = {058E7C7A-DDD9-4FC3-88C6-A2E3BAE57BA5}
+		{5027E1AE-90F8-4265-B68B-242BCA179545} = {058E7C7A-DDD9-4FC3-88C6-A2E3BAE57BA5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {6365D981-6147-4470-AD91-52B4FA3B3E2F}

@@ -19,6 +19,7 @@
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
     <PackageReference Include="Microsoft.ServiceFabric" Version="6.0.232" />
+    <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="2.8.232" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="2.8.232" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.WebListener" Version="2.8.232" />
     <PackageReference Include="Microsoft.ServiceFabric.Data" Version="2.8.232" />
@@ -28,6 +29,10 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ApplicationActor.Interfaces\ApplicationActor.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

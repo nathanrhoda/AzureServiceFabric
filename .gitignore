@@ -45,3 +45,7 @@
 /main/Quota/QuotationService.Test/obj/x64/Debug
 /main/Quota/Quota.CommonUtils/bin/Debug
 /main/Quota/Quota.CommonUtils/obj/Debug
+/main/Quota/ApplicationActor/bin/x64/Debug
+/main/Quota/ApplicationActor/obj/x64/Debug
+/main/Quota/ApplicationActor.Interfaces/bin/x64/Debug
+/main/Quota/ApplicationActor.Interfaces/obj/x64/Debug
