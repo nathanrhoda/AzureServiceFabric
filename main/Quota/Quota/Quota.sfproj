@@ -31,6 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplicationActor\ApplicationActor.csproj" />
     <ProjectReference Include="..\CurrencyService\CurrencyService.csproj" />
+    <ProjectReference Include="..\MailerService\MailerService.csproj" />
     <ProjectReference Include="..\Quota.Gateway\Quota.Gateway.csproj" />
     <ProjectReference Include="..\QuotationService\QuotationService.csproj" />
   </ItemGroup>

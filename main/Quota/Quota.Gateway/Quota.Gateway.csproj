@@ -33,6 +33,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ApplicationActor.Interfaces\ApplicationActor.Interfaces.csproj" />
+    <ProjectReference Include="..\Mailer.Interfaces\Mailer.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

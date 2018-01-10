@@ -49,3 +49,9 @@
 /main/Quota/ApplicationActor/obj/x64/Debug
 /main/Quota/ApplicationActor.Interfaces/bin/x64/Debug
 /main/Quota/ApplicationActor.Interfaces/obj/x64/Debug
+/main/Quota/Mailer.Interfaces/bin
+/main/Quota/Mailer.Interfaces/obj
+/main/Quota/MailerService/bin/x64/Debug
+/main/Quota/MailerService/obj/x64/Debug
+/main/Quota/Quota.CommonUtils/bin/x64/Debug
+/main/Quota/Quota.CommonUtils/obj/x64/Debug
