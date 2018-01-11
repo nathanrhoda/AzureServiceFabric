@@ -17,7 +17,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.0.1" />
-    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.0.2" />
     <PackageReference Include="Microsoft.ServiceFabric" Version="6.0.232" />
     <PackageReference Include="Microsoft.ServiceFabric.Actors" Version="2.8.232" />
     <PackageReference Include="Microsoft.ServiceFabric.AspNetCore.Kestrel" Version="2.8.232" />
@@ -34,6 +34,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ApplicationActor.Interfaces\ApplicationActor.Interfaces.csproj" />
     <ProjectReference Include="..\Mailer.Interfaces\Mailer.Interfaces.csproj" />
+    <ProjectReference Include="..\Quota.CommonUtils\Quota.CommonUtils.csproj" />
   </ItemGroup>
 
 </Project>
