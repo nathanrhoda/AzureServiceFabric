@@ -8,6 +8,7 @@ using Microsoft.ServiceFabric.Services.Remoting.Client;
 using System;
 using System.Threading.Tasks;
 using System.Net.Http;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Quota.Gateway.Controllers
 {
@@ -15,7 +16,8 @@ namespace Quota.Gateway.Controllers
     public class ApplicationController : Controller
     {
         private static readonly Random rnd = new Random(DateTime.UtcNow.Second);
-        [HttpGet]
+
+        [HttpGet]        
         public async Task<IActionResult> GetAsync()
         {
             var applicationActor = GetApplicationActor("1");

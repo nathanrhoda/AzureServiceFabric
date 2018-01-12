@@ -18,6 +18,15 @@ Post -> Quota.Gateway -> Retrieve Quote    -> Retrieve Quote by QuoteId
                                            -> Generate on Letterhead
                                            -> Mail Quote
 
+Gateway/Currency -> GET
+
+Gateway/Quotation -> GET
+Gateway/Quotation/{guid} -> GET
+Gateway/Quotation/{request} -> POST
+
+Gateway/Application -> GET
+Gateway/Application/{guid} -> GET
+Gateway/Application/{request} -> POST
 
 
 

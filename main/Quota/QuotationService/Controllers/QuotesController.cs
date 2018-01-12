@@ -7,6 +7,8 @@ namespace QuotationService.Controllers
     [Route("api/[controller]")]
     public class QuotesController : Controller
     {
+        private readonly IQuotationService service;
+
         [HttpGet]
         public IEnumerable<string> Get()
         {
@@ -21,16 +23,17 @@ namespace QuotationService.Controllers
 
         [HttpPost]
         public string Generate([FromBody] QuoteRequest request)
-        {            
+        {
             if (request == null)
             {
                 return "Failure";
             }
 
-            if(!request.IsValid())
+            if (!request.IsValid())
             {
-                return "Failure";                
+                return "Failure";
             }
+
 
             return "Success";
         }
