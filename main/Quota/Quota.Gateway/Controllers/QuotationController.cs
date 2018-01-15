@@ -35,7 +35,7 @@ namespace Quota.Gateway.Controllers
                 string serviceName = configSettings.QuoteServiceName;
                 string restUrl = "/api/Quotes";
                 var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
-              
+
                 HttpResponseMessage response = ServiceFabricAPIUtility.Get(config).Result;
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {
@@ -52,6 +52,31 @@ namespace Quota.Gateway.Controllers
             }
         }
 
+        [HttpGet("{guid}")]
+        public async Task<IActionResult> GetAsync(Guid guid)
+        {
+            try
+            {
+                string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
+                string serviceName = configSettings.QuoteServiceName;
+                string restUrl = "/api/Quotes/" + guid;
+                var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
+
+                HttpResponseMessage response = ServiceFabricAPIUtility.Get(config).Result;
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return this.StatusCode((int)response.StatusCode);
+                }
+
+                return this.Ok(await response.Content.ReadAsStringAsync());
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
 
         [HttpGet("Currency")]
         public async Task<IActionResult> GetCurrencyAsync()
