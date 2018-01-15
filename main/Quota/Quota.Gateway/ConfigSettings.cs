@@ -24,14 +24,14 @@ namespace Quota.Gateway
         {
             ConfigurationSection section = newPackageSettings.Sections["GatewayConfig"];
             this.CurrencyServiceName = section.Parameters["CurrencyServiceName"].Value;
-            this.QuotationServiceName = section.Parameters["QuotationServiceName"].Value;
+            this.QuoteServiceName = section.Parameters["QuoteServiceName"].Value;
             this.ReverseProxyPort = int.Parse(section.Parameters["ReverseProxyPort"].Value);
         }
 
 
         public string CurrencyServiceName { get; set; }
 
-        public string QuotationServiceName { get; set; }
+        public string QuoteServiceName { get; set; }
 
         public int ReverseProxyPort { get; set; }
     }

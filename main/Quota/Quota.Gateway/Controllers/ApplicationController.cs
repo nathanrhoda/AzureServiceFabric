@@ -7,8 +7,6 @@ using Microsoft.ServiceFabric.Services.Client;
 using Microsoft.ServiceFabric.Services.Remoting.Client;
 using System;
 using System.Threading.Tasks;
-using System.Net.Http;
-using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace Quota.Gateway.Controllers
 {

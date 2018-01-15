@@ -102,9 +102,9 @@
       <Project>{a6afa0f9-e249-4175-8336-b5ca05a88145}</Project>
       <Name>Quota.CommonUtils</Name>
     </ProjectReference>
-    <ProjectReference Include="..\QuotationService\QuotationService.csproj">
-      <Project>{EFD4AF1D-ED6C-49D6-8BED-D3880DD4B7BA}</Project>
-      <Name>QuotationService</Name>
+    <ProjectReference Include="..\QuoteService\QuoteService.csproj">
+      <Project>{F639DA69-FED0-4DC2-B4AD-C5D24486DDCA}</Project>
+      <Name>QuoteService</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

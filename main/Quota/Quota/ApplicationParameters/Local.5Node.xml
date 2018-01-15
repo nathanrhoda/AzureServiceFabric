@@ -4,15 +4,17 @@
     <Parameter Name="MailerService_PartitionCount" Value="1" />
     <Parameter Name="MailerService_MinReplicaSetSize" Value="3" />
     <Parameter Name="MailerService_TargetReplicaSetSize" Value="3" />
-    <Parameter Name="QuotationService_PartitionCount" Value="1" />
-    <Parameter Name="QuotationService_MinReplicaSetSize" Value="3" />
-    <Parameter Name="QuotationService_TargetReplicaSetSize" Value="3" />
     <Parameter Name="Quota.Gateway_InstanceCount" Value="1" />
     <Parameter Name="CurrencyService_InstanceCount" Value="1" />
     <Parameter Name="CurrencyService_PartitionCount" Value="1" />
     <Parameter Name="CurrencyService_MinReplicaSetSize" Value="3" />
     <Parameter Name="CurrencyService_TargetReplicaSetSize" Value="3" />
-    <Parameter Name="CurrencyService_InstanceCount" Value="1" />
     <Parameter Name="ApplicationActorService_PartitionCount" Value="1" />
+    <Parameter Name="ApplicationActorService_TargetReplicaSetSize" Value="3" />
+    <Parameter Name="ApplicationActorService_MinReplicaSetSize" Value="3" />
+    <Parameter Name="QuoteService_InstanceCount" Value="1" />
+    <Parameter Name="QuoteService_PartitionCount" Value="1" />
+    <Parameter Name="QuoteService_MinReplicaSetSize" Value="3" />
+    <Parameter Name="QuoteService_TargetReplicaSetSize" Value="3" />
   </Parameters>
 </Application>

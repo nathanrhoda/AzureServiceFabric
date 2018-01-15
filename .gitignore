@@ -55,3 +55,7 @@
 /main/Quota/MailerService/obj/x64/Debug
 /main/Quota/Quota.CommonUtils/bin/x64/Debug
 /main/Quota/Quota.CommonUtils/obj/x64/Debug
+/main/Quota/QuoteService/bin
+/main/Quota/QuoteService/obj
+/main/Quota/QuoteService.Test/bin
+/main/Quota/QuoteService.Test/obj

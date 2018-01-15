@@ -88,7 +88,7 @@ namespace Quota.Gateway.Controllers
                 string stringData = JsonConvert.SerializeObject(request);
                 var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
                 string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
-                string serviceName = this.configSettings.QuotationServiceName;                
+                string serviceName = this.configSettings.QuoteServiceName;                
                 string restUrl = "/api/quotes";
                 var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
 
