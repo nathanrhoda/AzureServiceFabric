@@ -23,6 +23,20 @@ namespace Quota.CommonUtils
             return httpClient.PostAsync(url, requestContent).Result;
         }
 
+        public static async Task<HttpResponseMessage> Get(ServiceFabricConfig config)
+        {
+            HttpClient httpClient = new HttpClient();
+            var resolver = ServicePartitionResolver.GetDefault();
+            var partitionKey = new ServicePartitionKey(-1);
+            var cancellationToken = new System.Threading.CancellationToken();
+            var p = await resolver.ResolveAsync(new Uri(config.ApplicationName + "/" + config.ServiceName), partitionKey, cancellationToken);
+
+            JObject addresses = JObject.Parse(p.GetEndpoint().Address);
+            string primaryReplicaAddress = (string)addresses["Endpoints"].First;
+            var url = primaryReplicaAddress + config.RestUrl;
+            return httpClient.GetAsync(url).Result;
+        }
+
         public static async Task<HttpResponseMessage> GetReverseProxyAsync(ServiceFabricConfig config)
         {
             HttpClient httpClient = new HttpClient();

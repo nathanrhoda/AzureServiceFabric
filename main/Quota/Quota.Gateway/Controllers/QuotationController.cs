@@ -32,11 +32,38 @@ namespace Quota.Gateway.Controllers
             try
             {
                 string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
+                string serviceName = configSettings.QuoteServiceName;
+                string restUrl = "/api/Quotes";
+                var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
+              
+                HttpResponseMessage response = ServiceFabricAPIUtility.Get(config).Result;
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return this.StatusCode((int)response.StatusCode);
+                }
+
+                return this.Ok(await response.Content.ReadAsStringAsync());
+
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
+
+        [HttpGet("Currency")]
+        public async Task<IActionResult> GetCurrencyAsync()
+        {
+            try
+            {
+                string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
                 string serviceName = configSettings.CurrencyServiceName;
                 string restUrl = "/api/Currencies";
                 int reverseProxyPort = configSettings.ReverseProxyPort;
                 var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl, reverseProxyPort);
-              
+
                 HttpResponseMessage response = ServiceFabricAPIUtility.GetReverseProxyAsync(config).Result;
                 if (response.StatusCode != System.Net.HttpStatusCode.OK)
                 {

@@ -7,6 +7,11 @@ namespace QuoteService.Model
 {
     public class Quote
     {
+        public Quote()
+        {
+            Items = new List<QuoteItem>();
+        }
+
         public Guid Id { get; set; }
         public List<QuoteItem> Items;            
     }

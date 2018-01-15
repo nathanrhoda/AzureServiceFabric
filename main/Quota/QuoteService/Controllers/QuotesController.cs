@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.ServiceFabric.Data;
 using QuoteService.Model;
+using QuoteService.Repository;
+using System;
 using System.Collections.Generic;
 
 namespace QuoteService.Controllers
@@ -7,18 +10,25 @@ namespace QuoteService.Controllers
     [Route("api/[controller]")]
     public class QuotesController : Controller
     {
-        private readonly IQuoteService service;
+        private readonly IReliableStateManager _stateManager;
+        public IQuoteRepository Repository;
+
+        public QuotesController(IReliableStateManager stateManager)
+        {
+            this._stateManager = stateManager;
+            Repository = new QuoteRepository(_stateManager);
+        }
 
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Quote> Get()
         {
-            return new string[] { "value1", "value2" };
+            return Repository.Get().Result;
         }
 
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Quote Get(Guid id)
         {
-            return "value";
+            return Repository.Get(id).Result;
         }
 
         [HttpPost]

@@ -11,6 +11,6 @@ namespace QuoteService.Model
         public string Description { get; set; }
         public string UnitType { get; set; }
         public double Price { get; set; }
-
+       
     }
 }
