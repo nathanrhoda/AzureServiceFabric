@@ -1,4 +1,6 @@
-﻿namespace Quota.Gateway.Model
+﻿using System.Collections.Generic;
+
+namespace Quota.Gateway.Model
 {
     public class GatewayQuoteRequest
     {
@@ -10,13 +12,7 @@
 
         public string ContactNumber { get; set; }
 
-        public string CategoryOfGoods { get; set; }
-
-        public string ContainerSize { get; set; }
-
-        public string UnitOfGoods { get; set; }
-
-        public int CostPriceOfGoods { get; set; }
+        public List<OrderItem> Items { get; set; }
 
         public bool IsValid()
         {

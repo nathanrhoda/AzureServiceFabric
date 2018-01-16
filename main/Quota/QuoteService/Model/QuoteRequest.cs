@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 
 namespace QuoteService.Model
@@ -14,13 +15,7 @@ namespace QuoteService.Model
 
         public string ContactNumber { get; set; }
 
-        public string CategoryOfGoods { get; set; }
-
-        public string ContainerSize { get; set; }
-
-        public string UnitOfGoods { get; set; }
-
-        public int CostPriceOfGoods { get; set; }
+        public List<QuoteItem> Items { get; set; }
 
         public bool IsValid()
         {

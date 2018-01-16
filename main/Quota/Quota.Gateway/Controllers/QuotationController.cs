@@ -78,6 +78,33 @@ namespace Quota.Gateway.Controllers
             }
         }
 
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] GatewayQuoteRequest request)
+        {
+            try
+            {
+                string stringData = JsonConvert.SerializeObject(request);
+                var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
+                string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
+                string serviceName = this.configSettings.QuoteServiceName;
+                string restUrl = "/api/quotes";
+                var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
+
+                HttpResponseMessage response = ServiceFabricAPIUtility.Post(requestContent, config).Result;
+                if (response.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    return this.StatusCode((int)response.StatusCode);
+                }
+
+                return Ok(await response.Content.ReadAsStringAsync());
+            }
+            catch (Exception e)
+            {
+
+                throw e;
+            }
+        }
+
         [HttpGet("Currency")]
         public async Task<IActionResult> GetCurrencyAsync()
         {
@@ -130,33 +157,6 @@ namespace Quota.Gateway.Controllers
 
                 throw e;
             }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> PostAsync([FromBody] GatewayQuoteRequest request)
-        {
-            try
-            {
-                string stringData = JsonConvert.SerializeObject(request);
-                var requestContent = new StringContent(stringData, System.Text.Encoding.UTF8, "application/json");
-                string applicationName = serviceContext.CodePackageActivationContext.ApplicationName;
-                string serviceName = this.configSettings.QuoteServiceName;                
-                string restUrl = "/api/quotes";
-                var config = ServiceFabricConfig.Initialize(applicationName, serviceName, restUrl);
-
-                HttpResponseMessage response = ServiceFabricAPIUtility.Post(requestContent, config).Result;
-                if (response.StatusCode != System.Net.HttpStatusCode.OK)
-                {
-                    return this.StatusCode((int)response.StatusCode);
-                }
-
-                return Ok(await response.Content.ReadAsStringAsync());
-            }
-            catch (Exception e)
-            {
-
-                throw e;
-            }
-        }
+        }        
     }
 }
