@@ -39,13 +39,29 @@ namespace QuoteService.Controllers
                 return "Failure";
             }
 
-            if (!request.IsValid())
+            if (request.IsValid())
             {
-                return "Failure";
+                Quote quote = new Quote();
+                quote.Name = request.Name;
+                quote.Surname = request.Surname;
+                quote.Email = request.Email;
+                quote.ContactNumber = request.ContactNumber;
+
+                foreach (var item in request.Items)
+                {
+
+                    var orderItem = new OrderItem();
+                    orderItem.productGuid = item.productGuid;
+                    orderItem.Quantity = item.Quantity;
+                    quote.Items.Add(orderItem);
+                }
+
+                Repository.AddQuote(quote);
+
+                return quote.Id.ToString();
             }
+            return "Failure";
 
-
-            return "Success";
         }
     }
 }

@@ -1,7 +1,4 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
 
 namespace QuoteService.Model
 {
@@ -15,7 +12,7 @@ namespace QuoteService.Model
 
         public string ContactNumber { get; set; }
 
-        public List<QuoteItem> Items { get; set; }
+        public List<OrderItem> Items { get; set; }
 
         public bool IsValid()
         {

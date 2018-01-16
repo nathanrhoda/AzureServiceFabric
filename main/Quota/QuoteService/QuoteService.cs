@@ -97,21 +97,21 @@ namespace QuoteService
                 UnitType = "Per Item"
             };
 
-            QuoteItem quoteItem1 = new QuoteItem
+            OrderItem quoteItem1 = new OrderItem
             {
-                Item = sonyHeadphones,
+                productGuid = sonyHeadphones.Id.ToString(),
                 Quantity = 100
             };
 
-            QuoteItem quoteItem2 = new QuoteItem
+            OrderItem quoteItem2 = new OrderItem
             {
-                Item = plantronicsHeadphones,
+                productGuid = plantronicsHeadphones.Id.ToString(),
                 Quantity = 200
             };
 
-            QuoteItem quoteItem3 = new QuoteItem
+            OrderItem quoteItem3 = new OrderItem
             {
-                Item = sonyHeadphones,
+                productGuid = sonyHeadphones.Id.ToString(),
                 Quantity = 400
             };
 

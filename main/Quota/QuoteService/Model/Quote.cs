@@ -9,9 +9,15 @@ namespace QuoteService.Model
     {
         public Quote()
         {
-            Items = new List<QuoteItem>();
+            Id = Guid.NewGuid();
+            Items = new List<OrderItem>();
         }
 
+        public Quote(Guid guid)
+        {
+            Id = guid;
+            Items = new List<OrderItem>();
+        }
 
         public Guid Id { get; set; }
 
@@ -23,6 +29,6 @@ namespace QuoteService.Model
 
         public string ContactNumber { get; set; }
 
-        public List<QuoteItem> Items;            
+        public List<OrderItem> Items;            
     }
 }
