@@ -3,7 +3,11 @@
 namespace QuoteService.Model
 {
     public class QuoteRequest
-    {        
+    {
+        public QuoteRequest()
+        {
+            Items = new List<OrderItem>();
+        }  
         public string Name { get; set; }
 
         public string Surname { get; set; }

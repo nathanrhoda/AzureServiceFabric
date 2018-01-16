@@ -5,6 +5,7 @@ using QuoteService.Controllers;
 using QuoteService.Model;
 using QuoteService.Test.Mock;
 using QuoteService.Test.TestObjects;
+using System.Collections.Generic;
 
 namespace QuoteService.Test
 {
@@ -22,14 +23,14 @@ namespace QuoteService.Test
             var quote1 = QuoteBuilder.Quote1;
             var quote2 = QuoteBuilder.Quote2;
             var mockStateManager = GetStateManager();
-            
+
             mockStateManager.Add("quotes", quote1);
             mockStateManager.Add("quotes", quote2);
             var controller = new QuotesController(mockStateManager);
             var quotes = controller.Get();
 
             Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote1.Name)));
-            Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote2.Name)));         
+            Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote2.Name)));
         }
 
         [TestMethod]
@@ -41,13 +42,18 @@ namespace QuoteService.Test
                 Name = "",
                 Surname = "",
                 Email = "",
-                ContactNumber = "",               
+                ContactNumber = "",
+                Items = new List<OrderItem>
+                {
+                    new OrderItem{ productGuid = "a1", Quantity= 10},
+                    new OrderItem{ productGuid = "qqq1", Quantity= 1210},
+                }
             };
 
             var controller = new QuotesController(mockStateManager);
             var msg = controller.Generate(request);
-
-            Assert.AreEqual("Success", msg);
+            
+            Assert.AreNotEqual("Failure", msg);
         }
 
         [TestMethod]
