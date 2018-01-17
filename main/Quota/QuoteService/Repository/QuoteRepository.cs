@@ -19,7 +19,7 @@ namespace QuoteService.Repository
             _stateManager = stateManager;
         }
 
-        public async Task AddQuote(Quote quote)
+        public async Task AddOrUpdate(Quote quote)
         {
             var quotes = await _stateManager.GetOrAddAsync<IReliableDictionary<Guid, Quote>>("quotes");
 
@@ -75,18 +75,6 @@ namespace QuoteService.Repository
 
                 return quote.HasValue ? quote.Value : null;
             }
-        }
-
-        public async Task Put(Guid guid, Quote quote)
-        {
-            var quotes = await _stateManager.GetOrAddAsync<IReliableDictionary<Guid, Quote>>("quotes");
-
-            using (var tx = _stateManager.CreateTransaction())
-            {
-                await quotes.AddOrUpdateAsync(tx, guid, quote, (id, value) => quote);
-
-                await tx.CommitAsync();
-            }
-        }
+        }        
     }
 }

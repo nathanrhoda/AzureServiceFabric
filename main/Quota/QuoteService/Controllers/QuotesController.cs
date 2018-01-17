@@ -56,7 +56,7 @@ namespace QuoteService.Controllers
                     quote.Items.Add(orderItem);
                 }
 
-                Repository.AddQuote(quote);
+                Repository.AddOrUpdate(quote);
 
                 return quote.Id.ToString();
             }
@@ -83,9 +83,14 @@ namespace QuoteService.Controllers
         [HttpPut("id")]
         public string Put(Guid id, [FromBody] QuoteRequest request)
         {
+            if (request == null || !request.IsValid())
+            {
+                return "Invalid Request";
+            }
+
             try
             {
-                Quote quote = new Quote();
+                Quote quote = new Quote(id);
                 quote.Name = request.Name;
                 quote.Surname = request.Surname;
                 quote.Email = request.Email;
@@ -100,13 +105,52 @@ namespace QuoteService.Controllers
                     quote.Items.Add(orderItem);
                 }
 
-                Repository.Put(id, quote);
+                Repository.AddOrUpdate(quote);
                 return "Success";
             }
             catch (Exception ex)
             {
                 throw ex;
-            }            
+            }
+        }
+
+        [HttpPatch]
+        public string Patch(Guid id, QuoteRequest request)
+        {
+            if (request == null || !request.IsValid())
+            {
+                return "Invalid Request";
+            }
+
+            try
+            {
+                var quote = Repository.Get(id).Result;
+                if (quote == null)
+                {
+                    return "Quote does not exist";
+                }
+
+                quote.Name = request.Name;
+                quote.Surname = request.Surname;
+                quote.Email = request.Email;
+                quote.ContactNumber = request.ContactNumber;
+
+                foreach (var item in request.Items)
+                {
+
+                    var orderItem = new OrderItem();
+                    orderItem.productGuid = item.productGuid;
+                    orderItem.Quantity = item.Quantity;
+                    quote.Items.Add(orderItem);
+                }
+
+                Repository.AddOrUpdate(quote);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

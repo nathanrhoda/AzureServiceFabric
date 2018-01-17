@@ -10,8 +10,7 @@ namespace QuoteService.Repository
     {
         Task<IEnumerable<Quote>> Get();
         Task<Quote> Get(Guid id);
-        Task AddQuote(Quote quote);
+        Task AddOrUpdate(Quote quote);
         Task Delete(Guid id);
-        Task Put(Guid guid, Quote quote);
     }
 }

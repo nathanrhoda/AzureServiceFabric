@@ -116,15 +116,15 @@ namespace QuoteService.Test
 
             var quote = controller.Get(quote1.Id);
             Assert.AreEqual("Quote1", quote.Name);
-            
+
             var request = new QuoteRequest
-            {                
+            {
                 Name = "Updated",
                 Surname = "Updated",
                 Email = "Updated",
                 ContactNumber = "Updated",
             };
-                                              
+
             var msg = controller.Put(quote1.Id, request);
 
             Assert.AreEqual("Success", msg);
@@ -157,6 +157,64 @@ namespace QuoteService.Test
 
             Assert.AreEqual(request.Name, updatedQuote.Name);
             Assert.IsNotNull(updatedQuote);
+        }
+
+        [TestMethod]
+        public void Patch_WhereExistingQuoteIsUpdated_ReturnsUpdatedQuote()
+        {
+            var mockStateManager = GetStateManager();
+            var quote = QuoteBuilder.Quote1;
+
+            mockStateManager.Add("quotes", quote);
+            var controller = new QuotesController(mockStateManager);
+
+            var request = new QuoteRequest
+            {
+                Name = "Patch",
+                Surname = "Patch",
+                Email = "Patch",
+                ContactNumber = "Patch",
+            };
+
+            var msg = controller.Patch(quote.Id, request);
+            var patchedQuote = controller.Get(quote.Id);
+
+            Assert.AreEqual(request.Name, patchedQuote.Name);
+        }
+
+        [TestMethod]
+        public void Patch_WhereQuoteThatDoesNotExistIsTryingToBeUpdated_ReturnsFailureErrorMessage()
+        {
+            var mockStateManager = GetStateManager();
+            var controller = new QuotesController(mockStateManager);
+
+            var request = new QuoteRequest
+            {
+                Name = "Patch",
+                Surname = "Patch",
+                Email = "Patch",
+                ContactNumber = "Patch",
+            };
+
+            var msg = controller.Patch(Guid.NewGuid(), request);
+
+            Assert.AreEqual("Quote does not exist", msg);
+        }
+
+        [TestMethod]
+        public void Patch_WhereInvalidUpdateIsAttemptedOnExistingQuote_ReturnsFailureMessage()
+        {
+            var mockStateManager = GetStateManager();
+            var controller = new QuotesController(mockStateManager);
+
+            var request = new QuoteRequest
+            {
+                Name = "Invalid Patch",
+            };
+
+            var msg = controller.Patch(Guid.NewGuid(), request);
+
+            Assert.AreEqual("Invalid Request", msg);
         }
     }
 }

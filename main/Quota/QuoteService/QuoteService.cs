@@ -128,8 +128,8 @@ namespace QuoteService
             };
 
             var repo = new QuoteRepository(StateManager);
-            await repo.AddQuote(quote1);
-            await repo.AddQuote(quote2);
+            await repo.AddOrUpdate(quote1);
+            await repo.AddOrUpdate(quote2);
         }
     }
 }
