@@ -133,6 +133,30 @@ namespace QuoteService.Test
             Assert.AreEqual(request.Name, returnedQuote.Name);
         }
 
+        [TestMethod]
+        public void Put_WhereQuoteDoesNotExist_CreatesAQuote()
+        {
+            var mockStateManager = GetStateManager();
+            var controller = new QuotesController(mockStateManager);
 
+            var quotes = controller.Get();
+            Assert.AreEqual(0, quotes.Count());
+
+            var guid = Guid.NewGuid();
+            var request = new QuoteRequest
+            {
+                Name = "Updated",
+                Surname = "Updated",
+                Email = "Updated",
+                ContactNumber = "Updated",
+            };
+            var msg = controller.Put(guid, request);
+            Assert.AreEqual("Success", msg);
+
+            var updatedQuote = controller.Get(guid);
+
+            Assert.AreEqual(request.Name, updatedQuote.Name);
+            Assert.IsNotNull(updatedQuote);
+        }
     }
 }
