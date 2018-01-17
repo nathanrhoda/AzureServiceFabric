@@ -27,7 +27,7 @@ namespace QuoteService.Test
         {
             var validRequest = new QuoteRequest
             {
-                Email = "quote@request.com"
+                Email = ""
             };
 
             Assert.IsFalse(validRequest.IsValid());

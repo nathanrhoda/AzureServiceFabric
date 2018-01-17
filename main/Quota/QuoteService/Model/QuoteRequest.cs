@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace QuoteService.Model
 {
@@ -7,7 +8,7 @@ namespace QuoteService.Model
         public QuoteRequest()
         {
             Items = new List<OrderItem>();
-        }  
+        }
         public string Name { get; set; }
 
         public string Surname { get; set; }
@@ -20,10 +21,10 @@ namespace QuoteService.Model
 
         public bool IsValid()
         {
-            if (Name == null ||
-                Surname == null ||
-                Email == null ||
-                ContactNumber == null)
+            if (String.IsNullOrEmpty(Name) ||
+                String.IsNullOrEmpty(Surname) ||
+                String.IsNullOrEmpty(Email) ||
+                String.IsNullOrEmpty(ContactNumber))
             {
                 return false;
             }
