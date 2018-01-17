@@ -22,14 +22,14 @@ namespace QuoteService.Test
             var quote1 = QuoteBuilder.Quote1;
             var quote2 = QuoteBuilder.Quote2;
             var mockStateManager = GetStateManager();
-            
+
             mockStateManager.Add("quotes", quote1);
             mockStateManager.Add("quotes", quote2);
             var controller = new QuotesController(mockStateManager);
             var quotes = controller.Get();
 
             Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote1.Name)));
-            Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote2.Name)));         
+            Assert.IsTrue(quotes.Any(x => x.Name.Equals(quote2.Name)));
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace QuoteService.Test
                 Name = "Woof",
                 Surname = "bark",
                 Email = "woof.bark@dog.com",
-                ContactNumber = "k9",               
+                ContactNumber = "k9",
             };
 
             var controller = new QuotesController(mockStateManager);
@@ -98,11 +98,41 @@ namespace QuoteService.Test
         {
             var guid = Guid.NewGuid();
             var mockStateManager = GetStateManager();
-            
+
             var controller = new QuotesController(mockStateManager);
             var msg = controller.Delete(guid);
 
-            Assert.IsNull(null);           
+            Assert.IsNull(null);
         }
+
+        [TestMethod]
+        public void Put_WhereQuoteGuidIsReplaced_ReturnsReplacedQuote()
+        {
+            var quote1 = QuoteBuilder.Quote1;
+            var mockStateManager = GetStateManager();
+            mockStateManager.Add("quotes", quote1);
+
+            var controller = new QuotesController(mockStateManager);
+
+            var quote = controller.Get(quote1.Id);
+            Assert.AreEqual("Quote1", quote.Name);
+            
+            var request = new QuoteRequest
+            {                
+                Name = "Updated",
+                Surname = "Updated",
+                Email = "Updated",
+                ContactNumber = "Updated",
+            };
+                                              
+            var msg = controller.Put(quote1.Id, request);
+
+            Assert.AreEqual("Success", msg);
+
+            var returnedQuote = controller.Get(quote1.Id);
+            Assert.AreEqual(request.Name, returnedQuote.Name);
+        }
+
+
     }
 }

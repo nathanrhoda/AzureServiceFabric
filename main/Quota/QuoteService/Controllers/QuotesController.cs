@@ -79,5 +79,34 @@ namespace QuoteService.Controllers
                 throw ex;
             }
         }
+
+        [HttpPut("id")]
+        public string Put(Guid id, [FromBody] QuoteRequest request)
+        {
+            try
+            {
+                Quote quote = new Quote();
+                quote.Name = request.Name;
+                quote.Surname = request.Surname;
+                quote.Email = request.Email;
+                quote.ContactNumber = request.ContactNumber;
+
+                foreach (var item in request.Items)
+                {
+
+                    var orderItem = new OrderItem();
+                    orderItem.productGuid = item.productGuid;
+                    orderItem.Quantity = item.Quantity;
+                    quote.Items.Add(orderItem);
+                }
+
+                Repository.Put(id, quote);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }            
+        }
     }
 }

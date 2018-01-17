@@ -12,5 +12,6 @@ namespace QuoteService.Repository
         Task<Quote> Get(Guid id);
         Task AddQuote(Quote quote);
         Task Delete(Guid id);
+        Task Put(Guid guid, Quote quote);
     }
 }
