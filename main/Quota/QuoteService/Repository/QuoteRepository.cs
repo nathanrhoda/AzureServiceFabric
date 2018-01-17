@@ -31,6 +31,18 @@ namespace QuoteService.Repository
             }
         }
 
+        public async Task Delete(Guid id)
+        {
+            var quotes = await _stateManager.GetOrAddAsync<IReliableDictionary<Guid, Quote>>("quotes");
+
+            using (var tx = _stateManager.CreateTransaction())
+            {
+                await quotes.TryRemoveAsync(tx, id);
+
+                await tx.CommitAsync();
+            }
+        }
+
         public async Task<IEnumerable<Quote>> Get()
         {
             var quotes = await _stateManager.GetOrAddAsync<IReliableDictionary<Guid, Quote>>("quotes");

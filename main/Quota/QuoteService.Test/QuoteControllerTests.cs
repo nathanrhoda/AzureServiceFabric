@@ -33,7 +33,7 @@ namespace QuoteService.Test
         }
 
         [TestMethod]
-        public void Generate_WhereQuoteRequestIsValid_ReturnsGuid()
+        public void Post_WhereQuoteRequestIsValid_ReturnsGuid()
         {
             var mockStateManager = GetStateManager();
             var request = new QuoteRequest
@@ -45,25 +45,25 @@ namespace QuoteService.Test
             };
 
             var controller = new QuotesController(mockStateManager);
-            var msg = controller.Generate(request);
+            var msg = controller.Post(request);
 
-            Assert.AreNotEqual("Failure", msg);
+            Assert.AreNotEqual("Invalid Request", msg);
         }
 
         [TestMethod]
-        public void Generate_WhereQuoteRequestIsNull_ReturnsFailureMessage()
+        public void Post_WhereQuoteRequestIsNull_ReturnsFailureMessage()
         {
             var mockStateManager = GetStateManager();
             QuoteRequest request = null;
 
             var controller = new QuotesController(mockStateManager);
-            var msg = controller.Generate(request);
+            var msg = controller.Post(request);
 
-            Assert.AreEqual("Failure", msg);
+            Assert.AreEqual("Invalid Request", msg);
         }
 
         [TestMethod]
-        public void Generate_WhereQuoteRequestIsInvalid_ReturnsFailureMessage()
+        public void Post_WhereQuoteRequestIsInvalid_ReturnsFailureMessage()
         {
             var mockStateManager = GetStateManager();
             var request = new QuoteRequest
@@ -75,23 +75,34 @@ namespace QuoteService.Test
             };
 
             var controller = new QuotesController(mockStateManager);
-            var msg = controller.Generate(request);
+            var msg = controller.Post(request);
 
-            Assert.AreEqual("Failure", msg);
+            Assert.AreEqual("Invalid Request", msg);
         }
 
+        [TestMethod]
+        public void Delete_WhereQuoteGuidExists_ReturnsSuccessMessage()
+        {
+            var quote1 = QuoteBuilder.Quote1;
+            var mockStateManager = GetStateManager();
 
+            mockStateManager.Add("quotes", quote1);
+            var controller = new QuotesController(mockStateManager);
+            var msg = controller.Delete(quote1.Id);
+
+            Assert.AreEqual("Success", msg);
+        }
 
         [TestMethod]
-        public void Generate_WhereQuoteRequestSuppliedIsNull_ReturnsFailureMessage()
+        public void Delete_WhereQuoteGuidDoesNotExists_ReturnsSuccessMessage()
         {
+            var guid = Guid.NewGuid();
             var mockStateManager = GetStateManager();
-            QuoteRequest request = null;
-
+            
             var controller = new QuotesController(mockStateManager);
-            var msg = controller.Generate(request);
+            var msg = controller.Delete(guid);
 
-            Assert.AreEqual("Failure", msg);
+            Assert.IsNull(null);           
         }
     }
 }

@@ -32,14 +32,14 @@ namespace QuoteService.Controllers
         }
 
         [HttpPost]
-        public string Generate([FromBody] QuoteRequest request)
+        public string Post([FromBody] QuoteRequest request)
         {
-            if (request == null)
+            if (request == null || !request.IsValid())
             {
-                return "Failure";
+                return "Invalid Request";
             }
 
-            if (request.IsValid())
+            try
             {
                 Quote quote = new Quote();
                 quote.Name = request.Name;
@@ -60,8 +60,24 @@ namespace QuoteService.Controllers
 
                 return quote.Id.ToString();
             }
-            return "Failure";
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
+        [HttpDelete]
+        public string Delete(Guid id)
+        {
+            try
+            {
+                Repository.Delete(id);
+                return "Success";
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }
