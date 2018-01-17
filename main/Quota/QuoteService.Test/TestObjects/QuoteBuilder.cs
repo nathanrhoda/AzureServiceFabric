@@ -16,6 +16,22 @@ namespace QuoteService.Test.TestObjects
             Id = Guid.NewGuid(),
             Name = "Quote2"
         };
-            
+
+        public static QuoteRequest ValidQuoteRequest = new QuoteRequest
+        {
+            Name = "Woof",
+            Surname = "bark",
+            Email = "woof.bark@dog.com",
+            ContactNumber = "k9",
+        };
+
+        public static QuoteRequest InvalidQuoteRequest = new QuoteRequest
+        {
+            Name = "Invalid Request",           
+        };
+
+
+        public static QuoteRequest NullQuoteRequest = null;
+
     }
 }
